@@ -402,3 +402,58 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   .slide.is-active img, .stamp__ring, .ticker__track, .status.is-open i::after { animation: none; }
   .slide { transition: none; }
 }
+
+/* =====================================================================
+   Grill section: plate on fire
+   ===================================================================== */
+.grill {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: 88px 0 72px;
+  background:
+    radial-gradient(ellipse 60% 55% at 72% 70%, #4a1d0c 0%, rgba(74, 29, 12, 0) 70%),
+    #140f0b;
+  color: var(--night-text);
+  touch-action: manipulation;
+}
+@media (min-width: 900px) { .grill { padding: 120px 0; } }
+.grill__fire { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+.grill__inner { position: relative; z-index: 1; display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) { .grill__inner { grid-template-columns: 1fr 1fr; gap: 64px; } }
+.grill .eyebrow { color: #f3a46a; }
+.grill h2 { font-size: clamp(2.5rem, 6vw, 4.4rem); line-height: 1.02; }
+.grill__lead { max-width: 30em; margin: 22px 0 30px; color: var(--night-soft); font-size: 1.08rem; }
+.grill__lead strong { color: var(--night-text); font-weight: 600; }
+
+.grill__side { display: flex; flex-direction: column; align-items: center; }
+.grill__stage {
+  position: relative;
+  width: min(74vw, 440px); aspect-ratio: 1;
+  margin-top: 48px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.grill__plate {
+  position: relative; z-index: 1;
+  width: 100%; height: 100%; border-radius: 50%;
+  animation: spin 90s linear infinite;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .7);
+  user-select: none; -webkit-user-drag: none;
+}
+.grill__glow {
+  position: absolute; inset: -22%; border-radius: 50%; z-index: 0;
+  background: radial-gradient(circle, rgba(255, 150, 50, .5) 0%, rgba(255, 90, 20, .22) 38%, rgba(255, 60, 10, 0) 68%);
+  animation: glow 2.6s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  0% { opacity: .75; transform: scale(.97); }
+  45% { opacity: 1; transform: scale(1.02); }
+  60% { opacity: .85; }
+  100% { opacity: 1; transform: scale(1); }
+}
+.grill__hint { margin: 28px 0 0; font-size: .88rem; color: var(--night-soft); letter-spacing: .02em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .grill__plate { animation: none; }
+  .grill__glow { animation: none; }
+  .grill__hint { display: none; }
+}

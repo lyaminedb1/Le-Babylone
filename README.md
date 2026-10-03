@@ -4,7 +4,7 @@ Site statique (HTML + CSS, sans dépendance) pour Le Babylone, resto · bar · g
 
 - `index.html` : page unique (accueil, spécialités, carte complète, infos & accès)
 - `style.css` : styles et animations
-- `main.js` : animations (diaporama des plats, badge « Ouvert maintenant », apparitions au scroll, carte qui suit la lecture). Le site reste lisible sans JS et respecte le réglage « réduire les animations ».
+- `main.js` : animations (assiette en feu en canvas, diaporama des plats, badge « Ouvert maintenant », apparitions au scroll, carte qui suit la lecture). Le site reste lisible sans JS et respecte le réglage « réduire les animations ».
 - `images/` : photos (plats, façade)
 - `fonts/` : polices auto-hébergées (Young Serif, Figtree), aucun appel à Google Fonts
 
