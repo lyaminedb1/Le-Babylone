@@ -366,7 +366,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 .stamp {
   position: absolute; z-index: 3; top: -34px; right: -6px;
   width: 112px; height: 112px;
-  filter: drop-shadow(0 6px 14px rgba(28, 24, 20, .25));
+  border-radius: 50%; box-shadow: 0 8px 18px rgba(0, 0, 0, .35);
 }
 @media (min-width: 900px) { .stamp { width: 132px; height: 132px; top: -44px; left: -50px; right: auto; } }
 .stamp__bg { fill: var(--red); }
@@ -519,7 +519,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 .bulb::before { content: ""; position: absolute; left: 2px; right: 2px; top: -4px; height: 5px; background: #1a0f09; border-radius: 1px; }
 @keyframes twinkle {
   0%, 100% { opacity: 1; }
-  50% { opacity: .55; box-shadow: 0 0 4px 1px rgba(255, 196, 92, .6), 0 0 12px 3px rgba(255, 160, 50, .2); }
+  50% { opacity: .5; }
 }
 
 /* Ticker: burgundy band, like the shutters */
@@ -560,3 +560,53 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 .actionbar a:first-child { background: var(--red); }
 
 @media (prefers-reduced-motion: reduce) { .bulb { animation: none; } }
+
+/* =====================================================================
+   Hero: the plate is served, then catches fire
+   ===================================================================== */
+.fire-canvas { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero-band .hero, .hero-band .facts { position: relative; z-index: 1; }
+
+.hero__media--fire { display: flex; flex-direction: column; align-items: center; margin: 0 16px; }
+.hero__media--fire .grill__stage { width: min(80vw, 380px); margin-top: 120px; }
+@media (min-width: 900px) {
+  .hero__media--fire { margin: 0; }
+  .hero__media--fire .grill__stage { width: min(38vw, 480px); margin-top: 110px; }
+}
+.hero__media--fire .stamp { top: -18px; left: -22px; right: auto; z-index: 3; }
+@media (min-width: 900px) { .hero__media--fire .stamp { top: -10px; left: -40px; } }
+
+/* "Served": slides in like a plate set down by a waiter, lands, settles */
+.serve { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; }
+.js .serve {
+  opacity: 0;
+  transform: translate(55%, -45%) rotate(-32deg) scale(1.18);
+  animation: serve 1.25s cubic-bezier(.2, .9, .25, 1.05) .55s forwards;
+}
+@keyframes serve {
+  0%   { opacity: 0; transform: translate(55%, -45%) rotate(-32deg) scale(1.18); }
+  15%  { opacity: 1; }
+  78%  { transform: translate(0, 0) rotate(2deg) scale(.985); }
+  90%  { transform: translate(0, 0) rotate(-.6deg) scale(1.006); }
+  100% { opacity: 1; transform: none; }
+}
+/* static round shadow (cheap): never recomputed while the plate spins */
+.serve { box-shadow: 0 24px 40px -10px rgba(0, 0, 0, .6); }
+.hero__media--fire .grill__plate { box-shadow: none; }
+/* glow and hint wait for the fire to catch */
+.js .hero__media--fire .grill__glow { opacity: 0; transition: opacity .6s ease; animation-play-state: paused; }
+.js .hero__media--fire.is-lit .grill__glow { opacity: 1; animation-play-state: running; }
+.js .hero__media--fire .grill__hint { opacity: 0; transition: opacity .8s ease .6s; }
+.js .hero__media--fire.is-lit .grill__hint { opacity: 1; }
+.js .hero__media--fire .stamp { opacity: 0; transform: scale(.4) rotate(-40deg); transition: opacity .5s ease, transform .7s cubic-bezier(.3, 1.6, .5, 1); }
+.js .hero__media--fire.is-lit .stamp { opacity: 1; transform: none; }
+
+/* Specialities arrive "served" from each side */
+.js .dish--serve[data-reveal] { transform: translateX(-70px) rotate(-5deg); }
+.js .dish--serve[data-reveal]:nth-child(2) { transform: translateX(70px) rotate(5deg); }
+.js .dish--serve[data-reveal].is-in { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .serve, .js .hero__media--fire .grill__glow, .js .hero__media--fire .grill__hint, .js .hero__media--fire .stamp { animation: none; opacity: 1; transform: none; transition: none; }
+}
+#specialites { overflow-x: clip; }

@@ -125,10 +125,13 @@
     var section = canvas.parentElement;
     var stage = section.querySelector('[data-fire-stage]');
     var ctx = canvas.getContext('2d');
-    var dpr = 1; // flames are soft: native resolution is enough and much cheaper
+    var dpr = 0.5; // flames are soft: render at half resolution, the browser upscales it (4x fewer pixels)
     var W = 0, H = 0, cx = 0, cy = 0, R = 0, scale = 1;
     var parts = [], MAX = 1100, time = 0;
     var wind = 0, windTarget = 0, boost = 0, running = false, raf = 0;
+    var serve = section.querySelector('[data-serve]');
+    var media = stage.closest('.hero__media--fire');
+    var lit = !serve;
 
     // Pre-rendered glow sprites, from hot core to cooling smoke-red
     function sprite(r, g, b) {
@@ -187,9 +190,11 @@
       boost *= 0.95;
       var intensity = 1 + boost;
 
-      var n = Math.round((13 + Math.random() * 5) * intensity * Math.max(scale, 0.6));
-      for (var i = 0; i < n; i++) spawnFlame(1 + boost * 0.35);
-      if (Math.random() < 0.45 * intensity) spawnEmber(1 + boost * 0.2);
+      if (lit) {
+        var n = Math.round((13 + Math.random() * 5) * intensity * Math.max(scale, 0.6));
+        for (var i = 0; i < n; i++) spawnFlame(1 + boost * 0.35);
+        if (Math.random() < 0.45 * intensity) spawnEmber(1 + boost * 0.2);
+      }
 
       ctx.globalCompositeOperation = 'source-over';
       ctx.clearRect(0, 0, W, H);
@@ -237,6 +242,19 @@
       boost = Math.min(boost + 2.2, 3.5);
       for (var k = 0; k < 40; k++) spawnEmber(2.2);
     });
+
+    function ignite() {
+      if (lit) return;
+      measure();
+      lit = true;
+      boost = 3.5; // whoosh
+      for (var k = 0; k < 70; k++) spawnEmber(2.6);
+      if (media) media.classList.add('is-lit');
+    }
+    if (serve) {
+      serve.addEventListener('animationend', ignite);
+      setTimeout(ignite, 2400); // safety net
+    }
 
     measure();
     if ('ResizeObserver' in window) new ResizeObserver(measure).observe(section);
