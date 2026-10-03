@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +9,12 @@
   <meta property="og:description" content="Grillades, pides et mezzes turcs. Service continu, 33 rue du Capitaine Dreyfus, Montreuil.">
   <meta property="og:image" content="images/cote-agneau.webp">
   <meta property="og:type" content="restaurant">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#f5efe4">
   <link rel="preload" href="fonts/young-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.className = "js";</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,18 +52,52 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero__text">
-      <p class="hero__place">Restaurant turc &amp; grillades · Montreuil</p>
-      <h1>Le Babylone</h1>
-      <p class="hero__lead">Grillades, pides tout juste sortis du four et plats traditionnels turcs. Service continu tous les jours, à deux pas de Croix-de-Chavaux.</p>
-      <div class="ctas">
-        <a class="btn btn--primary" href="tel:+33983074476">Réserver une table</a>
+      <p class="hero__place anim" style="--d:0ms">
+        <span>Restaurant turc &amp; grillades · Montreuil</span>
+        <span class="status" data-status hidden><i aria-hidden="true"></i><b data-status-text></b></span>
+      </p>
+      <h1 class="hero__title" aria-label="Le Babylone">
+        <span class="line" aria-hidden="true"><span style="--d:120ms">Le</span></span>
+        <span class="line" aria-hidden="true"><span style="--d:240ms">Babylone</span></span>
+      </h1>
+      <p class="hero__lead anim" style="--d:520ms">Grillades, pides tout juste sortis du four et plats traditionnels turcs. Service continu tous les jours, à deux pas de Croix-de-Chavaux.</p>
+      <div class="ctas anim" style="--d:640ms">
+        <a class="btn btn--primary" href="tel:+33983074476">Réserver une table <span class="btn__arrow" aria-hidden="true">→</span></a>
         <a class="btn btn--line" href="#carte">Voir la carte</a>
       </div>
-      <p class="hero__rating"><span class="star" aria-hidden="true">★</span> <strong>4,8</strong> sur Google · 777 avis</p>
+      <p class="hero__rating anim" style="--d:760ms"><span class="star" aria-hidden="true">★★★★★</span> <strong>4,8</strong> sur Google · <span data-count="777">777</span> avis</p>
     </div>
-    <figure class="hero__media">
-      <img src="images/cote-agneau.webp" alt="Côtes d'agneau grillées servies avec boulgour, frites et salade sur une planche en bois" width="994" height="574" fetchpriority="high">
-    </figure>
+
+    <div class="hero__media anim anim--media" style="--d:200ms">
+      <div class="slides" data-slides>
+        <figure class="slide is-active" data-name="Côte d'agneau" data-price="19 €">
+          <img src="images/cote-agneau.webp" alt="Côtes d'agneau grillées servies avec boulgour, frites et salade sur une planche en bois" width="994" height="574" fetchpriority="high">
+        </figure>
+        <figure class="slide" data-name="Beyti" data-price="19 €">
+          <img src="images/beyti.webp" alt="Beyti : viande hachée roulée dans une galette, sauce tomate et yaourt" width="920" height="630">
+        </figure>
+        <figure class="slide" data-name="Hunkar" data-price="19 €">
+          <img src="images/hunkar.webp" alt="Hunkar : émincé d'agneau sur aubergine béchamel, riz et roquette" width="1120" height="528">
+        </figure>
+      </div>
+      <div class="slide-caption" aria-live="polite">
+        <span class="slide-caption__name" data-slide-name>Côte d'agneau</span>
+        <span class="slide-caption__price" data-slide-price>19 €</span>
+      </div>
+      <div class="slide-dots" role="tablist" aria-label="Choisir un plat">
+        <button type="button" class="is-active" aria-label="Côte d'agneau"><i></i></button>
+        <button type="button" aria-label="Beyti"><i></i></button>
+        <button type="button" aria-label="Hunkar"><i></i></button>
+      </div>
+      <svg class="stamp" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="stamp-circle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+        <circle cx="100" cy="100" r="98" class="stamp__bg"/>
+        <g class="stamp__ring">
+          <text><textPath href="#stamp-circle" textLength="462">RESTO · BAR · GRILLADES · MONTREUIL · </textPath></text>
+        </g>
+        <text x="100" y="114" text-anchor="middle" class="stamp__center">★</text>
+      </svg>
+    </div>
   </section>
 
   <ul class="facts" aria-label="Infos pratiques">
@@ -70,23 +106,30 @@
     <li><span>Réservation</span><a href="tel:+33983074476">09 83 07 44 76</a></li>
   </ul>
 
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Adana</span><i>✦</i><span>Beyti</span><i>✦</i><span>Pide Babylone</span><i>✦</i><span>Grand mezze</span><i>✦</i><span>İmam bayıldı</span><i>✦</i><span>Ali nazik</span><i>✦</i><span>Köfte</span><i>✦</i><span>Baklava</span><i>✦</i>
+      <span>Adana</span><i>✦</i><span>Beyti</span><i>✦</i><span>Pide Babylone</span><i>✦</i><span>Grand mezze</span><i>✦</i><span>İmam bayıldı</span><i>✦</i><span>Ali nazik</span><i>✦</i><span>Köfte</span><i>✦</i><span>Baklava</span><i>✦</i>
+    </div>
+  </div>
+
   <!-- SPECIALITES -->
   <section id="specialites" class="section">
     <div class="wrap">
-      <header class="section__head">
+      <header class="section__head" data-reveal>
         <p class="eyebrow">Les incontournables</p>
         <h2>Les plats qu'on vient chercher</h2>
       </header>
       <div class="dishes">
-        <figure class="dish">
-          <img src="images/beyti.webp" alt="Beyti : brochettes de viande hachée roulées dans une galette, sauce tomate et yaourt" width="920" height="630" loading="lazy">
+        <figure class="dish" data-reveal>
+          <div class="dish__img"><img src="images/beyti.webp" alt="Beyti : brochettes de viande hachée roulées dans une galette, sauce tomate et yaourt" width="920" height="630" loading="lazy"></div>
           <figcaption>
             <h3>Beyti <span class="price">19 €</span></h3>
             <p>Viande hachée aux épices douces roulée dans une galette de pain, yaourt, sauce tomate maison et beurre fondu.</p>
           </figcaption>
         </figure>
-        <figure class="dish">
-          <img src="images/hunkar.webp" alt="Hunkar : émincé d'agneau sur purée d'aubergine béchamel, riz et roquette" width="1120" height="528" loading="lazy">
+        <figure class="dish" data-reveal>
+          <div class="dish__img"><img src="images/hunkar.webp" alt="Hunkar : émincé d'agneau sur purée d'aubergine béchamel, riz et roquette" width="1120" height="528" loading="lazy"></div>
           <figcaption>
             <h3>Hunkar <span class="price">19 €</span></h3>
             <p>Émincé d'agneau sur aubergine à la béchamel, sauce tomate et beurre fondu. Le « délice du sultan ».</p>
@@ -99,7 +142,7 @@
   <!-- CARTE -->
   <section id="carte" class="section section--alt">
     <div class="wrap">
-      <header class="section__head">
+      <header class="section__head" data-reveal>
         <p class="eyebrow">Midi &amp; soir, sans interruption</p>
         <h2>La carte</h2>
       </header>
@@ -118,7 +161,7 @@
         <a href="#c-vins">Vins</a>
       </nav>
 
-      <div class="formules" id="c-formules">
+      <div class="formules" id="c-formules" data-reveal>
         <div class="formule">
           <p class="formule__name">Entrée + Plat</p>
           <p class="formule__price">18 €</p>
@@ -130,7 +173,7 @@
       </div>
 
       <div class="menu">
-        <section class="menu__cat" id="c-froides">
+        <section class="menu__cat" data-reveal id="c-froides">
           <h3>Entrées froides</h3>
           <ul>
             <li><span class="n">Petit mezze<small>Assortiment d'entrées froides</small></span><span class="p">12,50</span></li>
@@ -148,7 +191,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-chaudes">
+        <section class="menu__cat" data-reveal id="c-chaudes">
           <h3>Entrées chaudes</h3>
           <ul>
             <li><span class="n">Falafel</span><span class="p">6,00</span></li>
@@ -156,7 +199,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-grillades">
+        <section class="menu__cat" data-reveal id="c-grillades">
           <h3>Grillades</h3>
           <p class="menu__note">Accompagnées de blé, salade et frites</p>
           <ul>
@@ -169,7 +212,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-traditionnels">
+        <section class="menu__cat" data-reveal id="c-traditionnels">
           <h3>Plats traditionnels</h3>
           <ul>
             <li><span class="n">Beyti<small>Viande hachée roulée dans une galette, yaourt, sauce tomate, beurre fondu</small></span><span class="p">19,00</span></li>
@@ -179,7 +222,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-pides">
+        <section class="menu__cat" data-reveal id="c-pides">
           <h3>Pides</h3>
           <p class="menu__note">La pizza turque, cuite au four</p>
           <ul>
@@ -194,7 +237,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-vege">
+        <section class="menu__cat" data-reveal id="c-vege">
           <h3>Assiettes végétariennes</h3>
           <p class="menu__note">Accompagnées de blé, salade et frites</p>
           <ul>
@@ -204,7 +247,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-salades">
+        <section class="menu__cat" data-reveal id="c-salades">
           <h3>Salades</h3>
           <p class="menu__note">Concombre, tomates, laitue et feta</p>
           <ul>
@@ -214,7 +257,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-desserts">
+        <section class="menu__cat" data-reveal id="c-desserts">
           <h3>Desserts</h3>
           <ul>
             <li><span class="n">Baklava<small>Feuilleté à la pistache et au sirop</small></span><span class="p">5,00</span></li>
@@ -224,7 +267,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat" id="c-boissons">
+        <section class="menu__cat" data-reveal id="c-boissons">
           <h3>Boissons</h3>
           <ul>
             <li><span class="n">Ayran<small>Boisson lactée salée au yaourt</small></span><span class="p">3,00</span></li>
@@ -236,7 +279,7 @@
           </ul>
         </section>
 
-        <section class="menu__cat menu__cat--wide" id="c-vins">
+        <section class="menu__cat menu__cat--wide" data-reveal id="c-vins">
           <h3>Vins</h3>
           <p class="menu__note">À la bouteille · turcs &amp; français, beaucoup en bio</p>
           <div class="wines">
@@ -269,7 +312,7 @@
   <!-- INFOS -->
   <section id="infos" class="section section--dark">
     <div class="wrap infos">
-      <div class="infos__text">
+      <div class="infos__text" data-reveal>
         <p class="eyebrow">Venir au Babylone</p>
         <h2>On vous garde une table</h2>
         <dl class="infos__list">
@@ -295,7 +338,7 @@
           <a class="btn btn--line-light" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Babylone+33+rue+du+Capitaine+Dreyfus+93100+Montreuil" target="_blank" rel="noopener">Itinéraire</a>
         </div>
       </div>
-      <div class="infos__map">
+      <div class="infos__map" data-reveal>
         <iframe title="Plan d'accès au Babylone" src="https://www.google.com/maps?q=33+rue+du+Capitaine+Dreyfus,+93100+Montreuil&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
@@ -315,8 +358,6 @@
   <a href="https://www.google.com/maps/search/?api=1&amp;query=Le+Babylone+33+rue+du+Capitaine+Dreyfus+93100+Montreuil" target="_blank" rel="noopener">Itinéraire</a>
 </div>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<script src="main.js" defer></script>
 </body>
 </html>
