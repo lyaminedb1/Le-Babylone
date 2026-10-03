@@ -119,9 +119,12 @@
 
   /* ---------- Grill: plate on fire (canvas particles) ---------- */
   var fireCanvas = document.querySelector('[data-fire]');
-  if (fireCanvas && !reduceMotion && fireCanvas.getContext) initFire(fireCanvas);
+  if (fireCanvas && fireCanvas.getContext) {
+    if (reduceMotion) initFire(fireCanvas, true); // frozen flames, no movement
+    else initFire(fireCanvas, false);
+  }
 
-  function initFire(canvas) {
+  function initFire(canvas, still) {
     var section = canvas.parentElement;
     var stage = section.querySelector('[data-fire-stage]');
     var ctx = canvas.getContext('2d');
@@ -225,10 +228,23 @@
         }
       }
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(frame);
+      if (!still) raf = requestAnimationFrame(frame);
     }
     function start() { if (!running) { running = true; if (!raf) raf = requestAnimationFrame(frame); } }
     function stop() { running = false; }
+
+    if (still) {
+      var renderStill = function () {
+        measure();
+        parts = []; lit = true; running = true; boost = 0;
+        for (var f = 0; f < 90; f++) frame();
+        running = false;
+      };
+      renderStill();
+      if ('ResizeObserver' in window) new ResizeObserver(renderStill).observe(section);
+      else window.addEventListener('resize', renderStill);
+      return;
+    }
 
     // The mouse/finger "blows" on the fire: flames lean away from the pointer
     section.addEventListener('pointermove', function (e) {
