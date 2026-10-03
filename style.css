@@ -64,17 +64,22 @@
 }
 
 :root {
-  --paper: #f5efe4;
-  --paper-2: #ece3d3;
-  --ink: #1c1814;
-  --ink-soft: #5d5348;
-  --red: #9b1c1c;
-  --red-dark: #7d1515;
-  --rule: rgba(28, 24, 20, .14);
-  --night: #1c1814;
-  --night-text: #efe7da;
-  --night-soft: #b3a796;
-  --night-rule: rgba(239, 231, 218, .16);
+  /* Palette taken from the storefront: stone walls, walnut wood, burgundy shutters, amber bulbs */
+  --paper: #f2e7d5;
+  --paper-2: #e8d8c0;
+  --ink: #2b1a12;
+  --ink-soft: #6b5242;
+  --red: #7f1d24;
+  --red-dark: #64151b;
+  --rule: rgba(43, 26, 18, .15);
+  --wood: #3b2318;
+  --wood-deep: #2a170f;
+  --amber: #eaa64a;
+  --amber-dark: #d48f30;
+  --night: #24150e;
+  --night-text: #f4e9d8;
+  --night-soft: #c7b098;
+  --night-rule: rgba(244, 233, 216, .14);
   --serif: "Young Serif", Georgia, serif;
   --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --wrap: 1160px;
@@ -457,3 +462,101 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   .grill__glow { animation: none; }
   .grill__hint { display: none; }
 }
+
+/* =====================================================================
+   Brand colours: walnut, burgundy, amber
+   ===================================================================== */
+
+/* Top bar: dark walnut like the awning */
+.topbar { background: rgba(36, 21, 14, .95); border-bottom-color: var(--night-rule); color: var(--night-text); }
+.topbar__brand { color: var(--night-text); }
+.topbar__nav a { color: var(--night-soft); }
+.topbar__nav a:hover { color: var(--amber); }
+.topbar .btn--primary { background: var(--amber); color: var(--wood-deep); }
+.topbar .btn--primary:hover { background: #f3b862; }
+.topbar.is-scrolled { box-shadow: 0 8px 24px -14px rgba(0, 0, 0, .7); }
+
+/* Hero band: warm wood */
+.hero-band {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 70% at 78% 40%, rgba(234, 166, 74, .16) 0%, rgba(234, 166, 74, 0) 70%),
+    linear-gradient(180deg, #43281b 0%, var(--wood) 55%, var(--wood-deep) 100%);
+  color: var(--night-text);
+}
+.hero { padding-top: 40px; }
+@media (min-width: 900px) { .hero { padding-top: 96px; } }
+.hero__place { color: var(--amber); }
+.hero__lead { color: var(--night-soft); }
+.hero__rating { color: var(--night-soft); }
+.hero__rating strong { color: var(--night-text); }
+.hero .star { color: var(--amber); }
+.hero .btn--primary { background: var(--amber); color: var(--wood-deep); }
+.hero .btn--primary:hover { background: #f3b862; }
+.hero .btn--line { border-color: rgba(244, 233, 216, .6); color: var(--night-text); }
+.hero .btn--line:hover { background: var(--night-text); color: var(--wood-deep); }
+.status { background: rgba(244, 233, 216, .08); color: var(--night-soft); }
+.status.is-open { background: rgba(111, 208, 140, .12); color: #9fe0b2; }
+.status.is-open i, .status.is-open i::after { background: #5fd185; }
+.slides { background: var(--wood-deep); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .8); }
+.slide-caption { background: rgba(242, 231, 213, .95); color: var(--ink); }
+.stamp__bg { fill: var(--red); stroke: var(--amber); stroke-width: 3; }
+.facts { border-color: var(--night-rule); }
+.facts li + li { border-color: var(--night-rule); }
+.facts span { color: var(--night-soft); }
+
+/* String lights across the top of the hero, like the terrace */
+.garland { position: absolute; top: 0; left: 0; right: 0; height: 64px; pointer-events: none; z-index: 2; }
+.garland svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.garland path { fill: none; stroke: rgba(20, 10, 5, .85); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.bulb {
+  position: absolute; width: 9px; height: 12px; margin: -1px 0 0 -4.5px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  background: #ffd98a;
+  box-shadow: 0 0 6px 2px rgba(255, 196, 92, .85), 0 0 22px 6px rgba(255, 160, 50, .35);
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+.bulb::before { content: ""; position: absolute; left: 2px; right: 2px; top: -4px; height: 5px; background: #1a0f09; border-radius: 1px; }
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .55; box-shadow: 0 0 4px 1px rgba(255, 196, 92, .6), 0 0 12px 3px rgba(255, 160, 50, .2); }
+}
+
+/* Ticker: burgundy band, like the shutters */
+.ticker { background: var(--red); border: 0; color: var(--night-text); }
+.ticker i { color: var(--amber); }
+
+/* Grill: deeper, browner embers */
+.grill {
+  background:
+    radial-gradient(ellipse 60% 55% at 72% 68%, #5a2410 0%, rgba(90, 36, 16, 0) 70%),
+    linear-gradient(180deg, var(--wood-deep) 0%, #1c0f09 100%);
+}
+.grill .eyebrow { color: var(--amber); }
+.grill .btn--primary { background: var(--amber); color: var(--wood-deep); }
+.grill .btn--primary:hover { background: #f3b862; }
+
+/* Light sections */
+.eyebrow { color: var(--red); }
+.dish .price, .formule__price { color: var(--red); }
+.menu__cat h3 { color: var(--wood); border-bottom-color: var(--wood); }
+.menu li.sub { color: var(--red); }
+.formule { border-color: var(--wood); }
+.chips a.is-active, .chips a:hover { border-bottom-color: var(--red); }
+
+/* Infos: walnut */
+.section--dark { background: linear-gradient(180deg, var(--wood) 0%, var(--night) 100%); }
+.section--dark .eyebrow { color: var(--amber); }
+.section--dark .btn--primary { background: var(--amber); color: var(--wood-deep); }
+.section--dark .btn--primary:hover { background: #f3b862; }
+.infos__list dt { color: var(--night-soft); }
+
+/* Footer */
+.footer { background: var(--night); color: var(--night-soft); }
+.footer__brand { color: var(--amber); }
+
+/* Mobile action bar */
+.actionbar { background: var(--night); }
+.actionbar a:first-child { background: var(--red); }
+
+@media (prefers-reduced-motion: reduce) { .bulb { animation: none; } }
