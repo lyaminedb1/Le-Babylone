@@ -7,12 +7,11 @@
   <meta name="description" content="Le Babylone, restaurant turc et bar au 33 rue du Capitaine Dreyfus à Montreuil. Grillades, pides, mezzes et plats traditionnels. Service continu. 4,8★ sur Google (777 avis).">
   <meta property="og:title" content="Le Babylone — Resto · Bar · Grillades à Montreuil">
   <meta property="og:description" content="Grillades, pides et mezzes turcs. Service continu, 33 rue du Capitaine Dreyfus, Montreuil.">
-  <meta property="og:image" content="images/facade.webp">
+  <meta property="og:image" content="images/cote-agneau.webp">
   <meta property="og:type" content="restaurant">
-  <meta name="theme-color" content="#15110e">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#f5efe4">
+  <link rel="preload" href="fonts/young-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -44,37 +43,35 @@
     <a href="#carte">La carte</a>
     <a href="#infos">Infos &amp; accès</a>
   </nav>
-  <a class="btn btn--amber btn--sm" href="tel:+33983074476">09 83 07 44 76</a>
+  <a class="btn btn--primary btn--sm" href="tel:+33983074476">09 83 07 44 76</a>
 </header>
 
 <main>
   <!-- HERO -->
   <section class="hero">
-    <img class="hero__img" src="images/facade.webp" alt="La façade illuminée du Babylone le soir, avec sa terrasse et son enseigne lumineuse" width="1570" height="1160">
-    <div class="hero__content">
-      <p class="hero__kicker">Resto · Bar · Grillades — Montreuil</p>
-      <h1 class="marquee" aria-label="Le Babylone">
-        <span>Le</span> <span>Babylone</span>
-      </h1>
-      <p class="hero__lead">Cuisine turque au feu de bois et à la braise, mezzes maison et terrasse animée, à deux pas de la Croix-de-Chavaux.</p>
-      <div class="hero__rating">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <strong>4,8</strong> sur Google · 777 avis
+    <div class="hero__text">
+      <p class="hero__place">Restaurant turc &amp; grillades · Montreuil</p>
+      <h1>Le Babylone</h1>
+      <p class="hero__lead">Grillades, pides tout juste sortis du four et plats traditionnels turcs. Service continu tous les jours, à deux pas de Croix-de-Chavaux.</p>
+      <div class="ctas">
+        <a class="btn btn--primary" href="tel:+33983074476">Réserver une table</a>
+        <a class="btn btn--line" href="#carte">Voir la carte</a>
       </div>
-      <div class="hero__ctas">
-        <a class="btn btn--amber" href="tel:+33983074476">Réserver par téléphone</a>
-        <a class="btn btn--ghost" href="#carte">Voir la carte</a>
-      </div>
+      <p class="hero__rating"><span class="star" aria-hidden="true">★</span> <strong>4,8</strong> sur Google · 777 avis</p>
     </div>
-    <ul class="hero__facts" aria-label="Infos pratiques">
-      <li><span>Service continu</span>11h – minuit</li>
-      <li><span>Adresse</span>33 rue du Capitaine Dreyfus</li>
-      <li><span>Sur place</span>Salle, bar &amp; terrasse</li>
-    </ul>
+    <figure class="hero__media">
+      <img src="images/cote-agneau.webp" alt="Côtes d'agneau grillées servies avec boulgour, frites et salade sur une planche en bois" width="994" height="574" fetchpriority="high">
+    </figure>
   </section>
 
+  <ul class="facts" aria-label="Infos pratiques">
+    <li><span>Horaires</span>Tous les jours, 11h – minuit</li>
+    <li><span>Adresse</span>33 rue du Capitaine Dreyfus</li>
+    <li><span>Réservation</span><a href="tel:+33983074476">09 83 07 44 76</a></li>
+  </ul>
+
   <!-- SPECIALITES -->
-  <section id="specialites" class="section section--stone">
+  <section id="specialites" class="section">
     <div class="wrap">
       <header class="section__head">
         <p class="eyebrow">Les incontournables</p>
@@ -95,19 +92,12 @@
             <p>Émincé d'agneau sur aubergine à la béchamel, sauce tomate et beurre fondu. Le « délice du sultan ».</p>
           </figcaption>
         </figure>
-        <figure class="dish">
-          <img src="images/cote-agneau.webp" alt="Côtes d'agneau grillées servies avec boulgour, frites et salade sur planche en bois" width="994" height="630" loading="lazy">
-          <figcaption>
-            <h3>Côte d'agneau <span class="price">19 €</span></h3>
-            <p>Côtes grillées à la braise, servies avec blé, salade et frites.</p>
-          </figcaption>
-        </figure>
       </div>
     </div>
   </section>
 
   <!-- CARTE -->
-  <section id="carte" class="section">
+  <section id="carte" class="section section--alt">
     <div class="wrap">
       <header class="section__head">
         <p class="eyebrow">Midi &amp; soir, sans interruption</p>
@@ -277,7 +267,7 @@
   </section>
 
   <!-- INFOS -->
-  <section id="infos" class="section section--wine">
+  <section id="infos" class="section section--dark">
     <div class="wrap infos">
       <div class="infos__text">
         <p class="eyebrow">Venir au Babylone</p>
@@ -300,9 +290,9 @@
             <dd>Ligne 9 · Croix-de-Chavaux</dd>
           </div>
         </dl>
-        <div class="hero__ctas">
-          <a class="btn btn--amber" href="tel:+33983074476">Appeler</a>
-          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Babylone+33+rue+du+Capitaine+Dreyfus+93100+Montreuil" target="_blank" rel="noopener">Itinéraire</a>
+        <div class="ctas">
+          <a class="btn btn--primary" href="tel:+33983074476">Appeler</a>
+          <a class="btn btn--line-light" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Babylone+33+rue+du+Capitaine+Dreyfus+93100+Montreuil" target="_blank" rel="noopener">Itinéraire</a>
         </div>
       </div>
       <div class="infos__map">

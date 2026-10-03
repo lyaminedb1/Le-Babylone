@@ -4,6 +4,7 @@ Site statique (HTML + CSS, sans dépendance) pour Le Babylone, resto · bar · g
 
 - `index.html` : page unique (accueil, spécialités, carte complète, infos & accès)
 - `style.css` : styles
-- `images/` : photos (façade, plats)
+- `images/` : photos (plats, façade)
+- `fonts/` : polices auto-hébergées (Young Serif, Figtree), aucun appel à Google Fonts
 
 Pour le mettre en ligne : GitHub Pages (Settings → Pages → branche, dossier `/`), Netlify ou Vercel en glisser-déposer.
